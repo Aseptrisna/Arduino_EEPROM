@@ -1,0 +1,15 @@
+#include <EEPROM.h>
+
+
+void setup() {
+    delay(5000); 
+    Serial.begin(9600);
+    EEPROM.begin(1024);
+    int a = EEPROM.read(0);
+    Serial.print("Variabel a adalah nilai dari EEPROM alamat 0 : ");
+    Serial.println(a);
+    //tambahkan baris ini :
+    EEPROM.write(0,96);
+    EEPROM.commit();
+}
+void loop(){}

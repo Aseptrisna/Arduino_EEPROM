@@ -1,0 +1,23 @@
+#include <EEPROM.h>
+//int dataterkirim = 1000;  
+
+void setup() {
+    delay(5000); 
+    Serial.begin(9600);
+    EEPROM.begin(1024);
+   
+}
+void loop(){
+    int a = EEPROM.read(0);
+    Serial.print("Variabel a adalah nilai dari EEPROM alamat 0 : ");
+    Serial.println(a);
+    //tambahkan baris ini :
+
+ if (Serial.available()>0)
+  {
+    int baca = Serial.read();
+    EEPROM.write(0,baca);
+    EEPROM.commit();
+    delay(5000);
+  }
+  }
